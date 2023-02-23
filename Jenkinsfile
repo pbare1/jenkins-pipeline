@@ -17,8 +17,8 @@ node{
     stage('Deploy and Run Container on App Server'){
     	def dockerRun = 'docker run -d -p 8904:8080 --name demo-java-app pbare1/some-web-app'
         sshagent(['PrivateKeyHost24']) {
-	    sh "docker stop 'demo-test-app'"
-	    sh "docker rm 'demo-test-app'"
+	    sh "docker stop 'demo-java-app'"
+	    sh "docker rm 'demo-java-app'"
 	    sh "docker rmi 'pbare1/some-web-app'"
             sh "ssh -o StrictHostKeyChecking=no debian@172.26.160.137 ${dockerRun}"
         }	
